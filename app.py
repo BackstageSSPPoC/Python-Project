@@ -1,7 +1,7 @@
 from flask import Flask
 
 app = Flask(__name__)
-DB_PASSWORD = "admin123"
+# DB_PASSWORD = "admin123"
 @app.route("/")
 def home():
     return """
