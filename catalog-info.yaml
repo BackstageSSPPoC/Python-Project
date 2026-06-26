@@ -1,0 +1,18 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: Python-Project
+  annotations:
+    github.com/project-slug: BackstageSSPPoC/Python-Project
+    backstage.io/techdocs-ref: dir:.
+    jenkins.io/job-full-name: Backstage_SSP_PoC/Python-Project/main
+    argocd/app-name: python-project-dev
+    backstage.io/kubernetes-id: Python-Project
+    sonarqube.org/project-key: python-project
+    prometheus.io/rule: "kube_pod_container_resource_requests{pod=~'python-project.*'}|resource,kube_pod_container_status_restarts_total{pod=~'python-project.*'}|container"
+    prometheus.io/alert: "KubePodCrashLooping,KubeDeploymentReplicasMismatch,KubePodNotReady,KubeContainerWaiting,KubeContainerOOMKilled,KubeDeploymentRolloutStuck"
+    prometheus.io/labels: "namespace=dev"
+spec:
+  type: service
+  lifecycle: dev
+  owner: user:default/chaitanya-shekhar-pandey
